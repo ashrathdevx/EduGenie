@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EduGenie
 
-## Getting Started
+An AI-powered study assistant built with Next.js and the Gemini API. Ask questions, get guided explanations, and attach a PDF or image for context.
 
-First, run the development server:
+## Features
+
+- Ask study questions and receive step-by-step explanations
+- Attach a PDF or a JPEG, PNG, or WebP image to a question
+- Responsive chat interface with subject prompt suggestions
+- Server-side Gemini API integration; the API key stays on the server
+- Request validation and clear handling for common API errors
+
+## Tech stack
+
+- Next.js App Router
+- React and TypeScript
+- Tailwind CSS
+- Google Gemini via `@google/genai`
+- Lucide icons and Motion for UI details
+
+## Getting started
+
+### Requirements
+
+- Node.js 20 or newer
+- npm
+- A Gemini API key
+
+### Install
+
+```bash
+npm install
+```
+
+Create `.env.local` in the project root:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+`GEMINI_MODEL` is optional; when omitted, EduGenie uses `gemini-2.5-flash`. Never commit your real API key.
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Upload limits
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+EduGenie accepts PDF, JPEG, PNG, and WebP files up to 8 MB. Questions can be up to 12,000 characters.
 
-## Learn More
+## Available scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Start the production server |
+| `npm run lint` | Run ESLint |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+src/
+├── app/          # Application shell and page
+├── api/chat/     # Gemini-backed chat endpoint
+├── components/   # Chat UI components
+└── lib/          # Gemini client helpers and utilities
+```
 
-## Deploy on Vercel
+## Current scope
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+EduGenie is an early-stage project. Conversation history is held in the current session UI and is not persisted to a database. Gemini responses can be incorrect; review important answers against trusted course materials.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+No license has been added yet. Contact the repository owner before reusing this project.
